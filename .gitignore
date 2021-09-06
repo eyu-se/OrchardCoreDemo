@@ -182,15 +182,15 @@ nuget.exe
 !lib/*/*.*
 
 #exclude node modules
-; node_modules/
-; web/[Bb]in/
-; web/[Oo]bj/
-; modules/**/[Bb]in/
-; modules/**/[Oo]bj/
-; !modules/**/wwwroot
-; !web/wwwroot
-; !modules/**/Localization/**/*.po
-; !web/Localization/**/*.po
+node_modules/
+web/[Bb]in/
+web/[Oo]bj/
+modules/**/[Bb]in/
+modules/**/[Oo]bj/
+!modules/**/wwwroot
+!web/wwwroot
+!modules/**/Localization/**/*.po
+!web/Localization/**/*.po
 
 
 wwwroot
