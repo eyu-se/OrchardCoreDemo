@@ -1,8 +1,5 @@
 @model StockPartViewModel
 
-<div class="form-group">
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" asp-for="Show" />
-        <label class="custom-control-label" asp-for="Show">@T["Show"]</label>
-    </div>
-</div>
+<div><strong>@Model.CompanyName</strong></div>
+<div>@T["Recorded Date: {0}", Model.RecordedDate?.ToShortDateString()]</div>
+<div>@T["Current Stock Price: {0}", Model.CurrentStockPrice]</div>

@@ -13,6 +13,7 @@ namespace StockAndShare.OrchardCoreDemo.ViewModels
         public string MySetting { get; set; }
 
         [Required]
+        
         public string CompanyName { get; set; }
 
         [Required]

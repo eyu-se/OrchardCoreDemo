@@ -4,7 +4,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)orchardcore.application.targets/1.0.0/build/OrchardCore.Application.Targets.targets" Condition="Exists('$(NuGetPackageRoot)orchardcore.application.targets/1.0.0/build/OrchardCore.Application.Targets.targets')" />
-    <Import Project="$(NuGetPackageRoot)orchardcore.application.cms.core.targets/1.0.0/build/OrchardCore.Application.Cms.Core.Targets.targets" Condition="Exists('$(NuGetPackageRoot)orchardcore.application.cms.core.targets/1.0.0/build/OrchardCore.Application.Cms.Core.Targets.targets')" />
+    <Import Project="$(NuGetPackageRoot)orchardcore.application.targets\1.0.0\build\OrchardCore.Application.Targets.targets" Condition="Exists('$(NuGetPackageRoot)orchardcore.application.targets\1.0.0\build\OrchardCore.Application.Targets.targets')" />
+    <Import Project="$(NuGetPackageRoot)orchardcore.application.cms.core.targets\1.0.0\build\OrchardCore.Application.Cms.Core.Targets.targets" Condition="Exists('$(NuGetPackageRoot)orchardcore.application.cms.core.targets\1.0.0\build\OrchardCore.Application.Cms.Core.Targets.targets')" />
   </ImportGroup>
 </Project>

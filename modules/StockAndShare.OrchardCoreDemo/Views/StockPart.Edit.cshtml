@@ -6,3 +6,22 @@
         <label class="custom-control-label" asp-for="Show">@T["Show"]</label>
     </div>
 </div>
+
+<fieldset class="form-group" asp-validation-class-for="CompanyName">
+    <label asp-for="CompanyName">@T["CompanyName"] <span asp-validation-for="CompanyName"></span></label>
+    <input asp-for="CompanyName" class="form-control" />
+    <span class="hint">@T["Company's name"]</span>
+</fieldset>
+
+<fieldset class="form-group" asp-validation-class-for="RecordedDate">
+    <label asp-for="RecordedDate">@T["RecordedDate"] <span asp-validation-for="RecordedDate"></span></label>
+    <input asp-for="RecordedDate" type="date" class="form-control" />
+</fieldset>
+
+<fieldset class="form-group" asp-validation-class-for="CurrentStockPrice">
+    <label asp-for="CurrentStockPrice">@T["CurrentStockPrice"] <span asp-validation-for="CurrentStockPrice"></span></label>
+    <input asp-for="CurrentStockPrice" type="number" class="form-control" />
+    <span class="hint">@T["Curren Stock Price"]</span>
+</fieldset>
+
+

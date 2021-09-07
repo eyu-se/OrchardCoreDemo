@@ -33,11 +33,17 @@ namespace StockAndShare.OrchardCoreDemo.Drivers
             BuildEditModel(model, part, context));
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(StockPart model, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(StockPart part, IUpdateModel updater, UpdatePartEditorContext context)
         {
-            await updater.TryUpdateModelAsync(model, Prefix, t => t.Show);
+            var viewModel = new StockPartViewModel();
+            await updater.TryUpdateModelAsync(viewModel, Prefix);
+            //await updater.TryUpdateModelAsync(model, Prefix, t => t.Show);
+            part.CompanyName = viewModel.CompanyName;
+            part.CurrentStockPrice = viewModel.CurrentStockPrice;
+            part.RecordedDate = viewModel.RecordedDate;
 
-            return Edit(model);
+            return await EditAsync(part, context);
+            //return Edit(model);
         }
 
         private Task BuildViewModel(StockPartViewModel model, StockPart part, BuildPartDisplayContext context)

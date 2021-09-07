@@ -12,24 +12,24 @@ using System;
 using System.Reflection;
 
 [assembly: OrchardCore.Modules.Manifest.ModuleMarkerAttribute("StockAndShare.OrchardCoreDemo", "Module")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas/StockAndShare.OrchardCoreDemo/Views/Home/Index.cshtml|/Users/mac/Documents/" +
-    "workstation/Personal/OrchardCoreProjects/OrchardDemoPortal/modules/StockAndShare" +
-    ".OrchardCoreDemo/Views/Home/Index.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas/StockAndShare.OrchardCoreDemo/Views/StockPart.Edit.cshtml|/Users/mac/Docume" +
-    "nts/workstation/Personal/OrchardCoreProjects/OrchardDemoPortal/modules/StockAndS" +
-    "hare.OrchardCoreDemo/Views/StockPart.Edit.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas/StockAndShare.OrchardCoreDemo/Views/StockPart.liquid|/Users/mac/Documents/w" +
-    "orkstation/Personal/OrchardCoreProjects/OrchardDemoPortal/modules/StockAndShare." +
-    "OrchardCoreDemo/Views/StockPart.liquid")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas/StockAndShare.OrchardCoreDemo/Views/StockPartSettings.Edit.cshtml|/Users/ma" +
-    "c/Documents/workstation/Personal/OrchardCoreProjects/OrchardDemoPortal/modules/S" +
-    "tockAndShare.OrchardCoreDemo/Views/StockPartSettings.Edit.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas/StockAndShare.OrchardCoreDemo/Views/StockPart_Summary.liquid|/Users/mac/Doc" +
-    "uments/workstation/Personal/OrchardCoreProjects/OrchardDemoPortal/modules/StockA" +
-    "ndShare.OrchardCoreDemo/Views/StockPart_Summary.liquid")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas/StockAndShare.OrchardCoreDemo/Views/_ViewImports.cshtml|/Users/mac/Document" +
-    "s/workstation/Personal/OrchardCoreProjects/OrchardDemoPortal/modules/StockAndSha" +
-    "re.OrchardCoreDemo/Views/_ViewImports.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas\\StockAndShare.OrchardCoreDemo\\Views\\Home\\Index.cshtml|C:\\Users\\User\\Documen" +
+    "ts\\workstation\\projects\\OrchardCoreDemo\\modules\\StockAndShare.OrchardCoreDemo\\Vi" +
+    "ews\\Home\\Index.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas\\StockAndShare.OrchardCoreDemo\\Views\\StockPart.cshtml|C:\\Users\\User\\Document" +
+    "s\\workstation\\projects\\OrchardCoreDemo\\modules\\StockAndShare.OrchardCoreDemo\\Vie" +
+    "ws\\StockPart.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas\\StockAndShare.OrchardCoreDemo\\Views\\StockPart.Edit.cshtml|C:\\Users\\User\\Doc" +
+    "uments\\workstation\\projects\\OrchardCoreDemo\\modules\\StockAndShare.OrchardCoreDem" +
+    "o\\Views\\StockPart.Edit.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas\\StockAndShare.OrchardCoreDemo\\Views\\StockPartSettings.Edit.cshtml|C:\\Users\\" +
+    "User\\Documents\\workstation\\projects\\OrchardCoreDemo\\modules\\StockAndShare.Orchar" +
+    "dCoreDemo\\Views\\StockPartSettings.Edit.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas\\StockAndShare.OrchardCoreDemo\\Views\\StockPart_Summary.liquid|C:\\Users\\User\\" +
+    "Documents\\workstation\\projects\\OrchardCoreDemo\\modules\\StockAndShare.OrchardCore" +
+    "Demo\\Views\\StockPart_Summary.liquid")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute("Areas\\StockAndShare.OrchardCoreDemo\\Views\\_ViewImports.cshtml|C:\\Users\\User\\Docum" +
+    "ents\\workstation\\projects\\OrchardCoreDemo\\modules\\StockAndShare.OrchardCoreDemo\\" +
+    "Views\\_ViewImports.cshtml")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("StockAndShare.OrchardCoreDemo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
