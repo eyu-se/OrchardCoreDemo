@@ -20,4 +20,8 @@
   <ItemGroup>
     <EmbeddedResource Remove="OrchardCore.ContentFields" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Stock\" />
+  </ItemGroup>
 </Project>

@@ -663,6 +663,22 @@
           "Settings": {}
         }
       ]
+    },
+    {
+      "Name": "StockWidget",
+      "DisplayName": "Stock Widget",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "StockPart",
+          "Name": "StockPart",
+          "Settings": {}
+        }
+      ]
     }
   ],
   "ContentPartDefinitionRecords": [
@@ -1107,5 +1123,5 @@
       ]
     }
   ],
-  "Identifier": "433qsenw76350xs080ts3x3qm3"
+  "Identifier": "47nzs03hqkdjszacckrbk4mmwd"
 }

@@ -37,5 +37,14 @@ namespace StockAndShare.OrchardCoreDemo
 
             return 1;
         }
+
+        public int UpdateFrom1() {
+
+            _contentDefinitionManager.AlterTypeDefinition("StockWidget", type => type
+           .WithPart(nameof(StockPart))
+           .Stereotype("Widget"));
+
+            return 2;
+        }
     }
 }
