@@ -12,5 +12,12 @@ namespace StockAndShare.OrchardCoreDemo.Handlers
 
             return Task.CompletedTask;
         }
+
+        public override Task UpdatedAsync(UpdateContentContext context, StockPart instance)
+        {
+            context.ContentItem.DisplayText = instance.CompanyName;
+
+            return Task.CompletedTask;
+        }
     }
 }
