@@ -14,6 +14,10 @@ using StockAndShare.OrchardCoreDemo.Models;
 using StockAndShare.OrchardCoreDemo.Settings;
 using StockAndShare.OrchardCoreDemo.ViewModels;
 using OrchardCore.Modules;
+using OrchardCore.DisplayManagement.Handlers;
+using OrchardCore.DisplayManagement;
+using Microsoft.AspNetCore.Mvc;
+using StockAndShare.OrchardCoreDemo.Filters;
 
 namespace StockAndShare.OrchardCoreDemo
 {
@@ -31,7 +35,19 @@ namespace StockAndShare.OrchardCoreDemo
                 .AddHandler<StockPartHandler>();
 
             services.AddScoped<IContentTypePartDefinitionDisplayDriver, StockPartSettingsDisplayDriver>();
+            services.AddScoped<IDisplayDriver<StockPartViewModel>, StockDisplayDriver>();
+            services.AddScoped<IDisplayManager<StockPartViewModel>, DisplayManager<StockPartViewModel>>();
+
             services.AddScoped<IDataMigration, Migrations>();
+
+            // Filters
+            services.Configure<MvcOptions>((options) =>
+            {
+                options.Filters.Add(typeof(ShapeInjectionFilter));
+                options.Filters.Add(typeof(ResourceInjectionFilter));
+                options.Filters.Add(typeof(ResourceFromShapeInjectingFilter));
+            });
+
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.ContentManagement.Records;
+using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.ModelBinding;
 using StockAndShare.OrchardCoreDemo.Models;
 using StockAndShare.OrchardCoreDemo.ViewModels;
@@ -16,22 +17,53 @@ using YesSql;
 
 namespace StockAndShare.OrchardCoreDemo.Controllers
 {
-    public class StockController : Controller
+    public class StockController : Controller, IUpdateModel
+
     {
         private readonly ISession _session;
         private readonly IContentManager _contentManager;
         private readonly IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IUpdateModelAccessor _updateModelAccessor;
-        public StockController(ISession session, IContentManager contentManager, IContentItemDisplayManager contentItemDisplayManager, IUpdateModelAccessor updateModelAccessor)
+        private readonly IDisplayManager<StockPartViewModel> _stockViewDisplayManager;
+        public StockController(ISession session, IContentManager contentManager, IContentItemDisplayManager contentItemDisplayManager, IUpdateModelAccessor updateModelAccessor, IDisplayManager<StockPartViewModel> stockViewDisplayManager)
         {
 
             _session = session;
             _contentManager = contentManager;
             _contentItemDisplayManager = contentItemDisplayManager;
             _updateModelAccessor = updateModelAccessor;
+            _stockViewDisplayManager = stockViewDisplayManager;
         }
-        
 
+
+        public async Task<ActionResult> Index1()
+        {
+            List<StockPartViewModel> stocks = new List<StockPartViewModel>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://613645c28700c50017ef550c.mockapi.io/stocks"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(apiResponse);
+                    stocks = JsonConvert.DeserializeObject<List<StockPartViewModel>>(apiResponse);
+                }
+            }
+
+            var shapes = await Task.WhenAll(stocks.Select(async stock =>
+            {
+                // When you retrieve content items via ISession then you also need to run LoadAsync() on them to
+                // initialize everything.
+                return await _stockViewDisplayManager.BuildDisplayAsync(stock, this);
+
+                //return await _contentItemDisplayManager.BuildDisplayAsync(stock, _updateModelAccessor.ModelUpdater, "Detail");
+            }));
+
+            // Now assuming that you've already created a few Person content items on the dashboard and some of these
+            // persons are more than 30 years old then this query will contain items to display.
+            // NEXT STATION: Go to Views/PersonList/OlderThan30.cshtml and then come back here please.
+
+            return View(shapes);
+        }
         public async Task<ActionResult> Index()
         {
             /*var stocks = await _session
