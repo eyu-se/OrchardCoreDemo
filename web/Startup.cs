@@ -10,8 +10,12 @@ namespace web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOrchardCms();
+            /*services.AddMvc().AddNewtonsoftJson();*/
+
+            services.AddCors();
+
         }
-        
+
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
             if (env.IsDevelopment())

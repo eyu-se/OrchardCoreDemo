@@ -30,22 +30,88 @@ namespace StockAndShare.OrchardCoreDemo.Controllers
             _contentItemDisplayManager = contentItemDisplayManager;
             _updateModelAccessor = updateModelAccessor;
         }
-        
 
-        public async Task<ActionResult> Index()
+        [HttpGet, ActionName("Records")]
+        public async Task<IActionResult> Records()
         {
-            /*var stocks = await _session
-                 .Query<ContentItem, ContentItemIndex>(index => index.ContentType == "StockPage")
-                 .ListAsync();*/
 
-            List<StockPartViewModel> stocks = new List<StockPartViewModel>();
+
+            return Ok("HEy");
+        }
+
+
+        [HttpPost, ActionName("Post")]
+        public async Task<IActionResult> Post()
+        {
+
+
+            return Ok("HEy");
+        }
+
+
+        public async Task<ActionResult> SaveTop10()
+        {
+            List<StockViewModel> stocks = new List<StockViewModel>();
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("https://613645c28700c50017ef550c.mockapi.io/stocks"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     Console.WriteLine(apiResponse);
-                    stocks = JsonConvert.DeserializeObject<List<StockPartViewModel>>(apiResponse);
+                    stocks = JsonConvert.DeserializeObject<List<StockViewModel>>(apiResponse);
+                }
+            }
+            var tobeDeleted = await _session
+                 .Query<StockViewModel>()
+                 .ListAsync();
+            foreach (var item in tobeDeleted)
+            {
+                _session.Delete(item);
+            }
+
+
+            //List<StockViewModel> result = new List<StockViewModel>();
+            for (int i = 0; i < 10; i++)
+            {
+                if (i < stocks.Count) {
+                    _session.Save(stocks[i]);
+                }
+
+            }
+
+
+            
+
+            return RedirectToAction("Saved");
+        
+        }
+
+        public async Task<ActionResult> Saved()
+        {
+
+
+            var stocks = await _session
+                  .Query<StockViewModel>()
+                  .ListAsync();
+
+
+           
+            return View(stocks);
+        }
+        public async Task<ActionResult> Index()
+        {
+            /*var stocks = await _session
+                 .Query<ContentItem, ContentItemIndex>(index => index.ContentType == "StockPage")
+                 .ListAsync();*/
+
+            List<StockViewModel> stocks = new List<StockViewModel>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://613645c28700c50017ef550c.mockapi.io/stocks"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(apiResponse);
+                    stocks = JsonConvert.DeserializeObject<List<StockViewModel>>(apiResponse);
                 }
             }
 

@@ -2,7 +2,7 @@
     so we just simply enumerate it and use the previously seen
     DisplayAsync helper to display these shapes. *@
 
-@model IEnumerable<StockPartViewModel>
+@model IEnumerable<StockViewModel>
 @using Microsoft.AspNetCore.Mvc.Localization
 
 </div>
@@ -38,18 +38,183 @@
                     <div class="widget-body">
 
 
-                        <ul>
+                        <ul style="list-style:none">
                             @foreach (var m in Model)
                             {
-                                <li>
-                                    @m.CompanyName <br />
-                                    @m.RecordedDate <br />
-                                    @m.CurrentStockPrice <br />
-                                </li>
+                            <li>
+
+                                Company Name: @m.CompanyName <br />
+                                Recorded On: @m.RecordedDate <br />
+                                Stock Price: @m.CurrentStockPrice <br />
+                                <br />
+                                <hr />
+                                <br />
+
+
+                            </li>
                             }
                         </ul>
 
+                        <button><a href="/StockAndShare.OrchardCoreDemo/Stock/SaveTop10">Save Top 10</a></button>
+                        @*<button id="test">Test</button>*@
 
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                var a = @Html.Raw(Json.Serialize(Model).ToString());
+                                 $("#test").click(function () {
+                                //alert("");
+
+                                     $.ajax({
+                                         url: "/StockAndShare.OrchardCoreDemo/Stock/SaveTop10",
+                                         type: "GET",
+                                         data: { },
+                                         success: function (response) {
+                                             alert(response);
+                                         },
+                                         error: function (response) {
+                                             console.log(response);
+                                         }
+                                     });
+
+                                @*$.ajax({
+                                    type: "POST",
+                                    url: '/test',
+                                    data: '@Html.Raw(Json.Serialize(Model))',
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function () {
+                                        console.log("Success");
+                                       // alert("Data has been added successfully.");
+                                        //LoadData();
+                                    },
+                                    error: function () {
+                                        console.log("Error");
+                                    }
+                                });*@
+                                return false;
+                            });
+                               @* $.ajax({
+                                    url: "../../Home/FirstAjax",
+                                    type: "GET",
+                                    data: { a: a },
+                                    success: function (response) {
+                                        alert(response);
+                                    },
+                                    error: function (response) {
+                                        alert(response);
+                                    }
+                                });*@
+                            });
+                        </script>
+                        @*<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var serviceURL = '/AjaxTest/FirstAjax';
+
+                $.ajax({
+                    type: "POST",
+                    url: serviceURL,
+                    data: param = "",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: successFunc,
+                    error: errorFunc
+                });
+
+                function successFunc(data, status) {
+                    alert(data);
+                }
+
+                function errorFunc() {
+                    alert('error');
+                }
+            });
+        </script>
+        <button id="test">Test</button>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script type="text/javascript">
+
+
+                 $(function () {
+                            LoadData();
+                            $("#test").click(function () {
+                                //alert("");
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/test',
+                                    data: '@Html.Raw(Json.Serialize(Model))',
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function () {
+                                        console.log("Success");
+                                       // alert("Data has been added successfully.");
+                                        //LoadData();
+                                    },
+                                    error: function () {
+                                        console.log("Error");
+                                    }
+                                });
+                                return false;
+                            });
+                        });
+                        $(function () {
+                            LoadData();
+                            $("#btnSave").click(function () {
+                                //alert("");
+                                var std = {};
+                                std.studentName = $("#StudentName").val();
+                                std.studentAddress = $("#StudentAddress").val();
+                                $.ajax({
+                                    type: "POST",
+                                    url: '@Url.Action("createStudent")',
+                                    data: '{std: ' + JSON.stringify(std) + '}',
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function () {
+                                       // alert("Data has been added successfully.");
+                                        LoadData();
+                                    },
+                                    error: function () {
+                                        alert("Error while inserting data");
+                                    }
+                                });
+                                return false;
+                            });
+                        });
+
+                        function LoadData() {
+                            $("#tblStudent tbody tr").remove();
+                            $.ajax({
+                                type: 'POST',
+                                url: '@Url.Action("getStudent")',
+                                dataType: 'json',
+                                data: { id: '' },
+                                success: function (data) {
+                                    var items = '';
+                                    $.each(data, function (i, item) {
+                                        var rows = "<tr>"
+                                        + "<td class='prtoducttd'>" + item.studentID + "</td>"
+                                        + "<td class='prtoducttd'>" + item.studentName + "</td>"
+                                        + "<td class='prtoducttd'>" + item.studentAddress + "</td>"
+                                        + "</tr>";
+                                        $('#tblStudent tbody').append(rows);
+                                    });
+                                },
+                                error: function (ex) {
+                                    var r = jQuery.parseJSON(response.responseText);
+                                    alert("Message: " + r.Message);
+                                    alert("StackTrace: " + r.StackTrace);
+                                    alert("ExceptionType: " + r.ExceptionType);
+                                }
+                            });
+                            return false;
+                        }
+        </script>*@
 
                     </div>
                 </div>

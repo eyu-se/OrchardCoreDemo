@@ -1,0 +1,76 @@
+﻿@* The "shapes" object is an IEnumerable<dynamic>
+    so we just simply enumerate it and use the previously seen
+    DisplayAsync helper to display these shapes. *@
+
+@model IEnumerable<StockViewModel>
+@using Microsoft.AspNetCore.Mvc.Localization
+
+</div>
+</div>
+</div>
+
+
+<header class="masthead" style="margin-top:-30px; background-image: url('/media/home-bg.jpg?width=2048&amp;height=600&amp;rmode=crop&amp;rxy=0.5,0.5&amp;token=yz5Oai16HXz0tzMTm%2Fb0zebw%2F43eQBUv6A388szgi0k%3D')">
+
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>@T["List Of Saved Stocks"]</h1>
+                    <span class="subheading">
+                        @T.Plural(Model.Count(), "There's one Saved Stock.", "There are {0} Saved stocks.")
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container px-4 px-lg-5 mb-4">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+
+
+            <div class="widget-container">
+
+                <div class="widget widget-stock-widget">
+                    <div class="widget-body">
+
+
+                        <ul style="list-style:none">
+                            @foreach (var m in Model)
+                            {
+                            <li>
+
+                                Company Name: @m.CompanyName <br />
+                                Recorded On: @m.RecordedDate <br />
+                                Stock Price: @m.CurrentStockPrice <br />
+                                <br />
+                                <hr />
+                                <br />
+
+
+                            </li>
+                            }
+                        </ul>
+
+                        
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div>
+    <div>
+        <div>

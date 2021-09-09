@@ -32,6 +32,7 @@ namespace StockAndShare.OrchardCoreDemo
 
             services.AddScoped<IContentTypePartDefinitionDisplayDriver, StockPartSettingsDisplayDriver>();
             services.AddScoped<IDataMigration, Migrations>();
+            services.AddMvc().AddNewtonsoftJson();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
